@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import { createContext, useState } from 'react';
 import './App.css';
+import ChildOne from './components/context/childOne';
+
+export const MyName = createContext();
+export const Institute = createContext();
+export const Role = createContext();
+export const MyCounter = createContext();
 
 function App() {
+
+  const [counter, setCounter] = useState(0);
+
+  const obj = {
+    counter,
+    handleChange: () => setCounter(counter + 1)
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>counter: {counter}</h1>
+      <MyName.Provider value={"Sinan"}>
+        <Institute.Provider value={"Prepbytes"}>
+          <Role.Provider value={"MERN Stack Dev"}>
+            <MyCounter.Provider value={obj}>
+              <ChildOne />
+            </MyCounter.Provider>
+          </Role.Provider>
+        </Institute.Provider>
+      </MyName.Provider>
     </div>
   );
 }
 
 export default App;
+// export {MyName};
