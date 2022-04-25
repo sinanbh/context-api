@@ -11,6 +11,3 @@ function MemoReact({ counter, handleChange }) {
 }
 
 export default memo(MemoReact)
-© 2022 GitHub, Inc.
-Terms
-Priv
